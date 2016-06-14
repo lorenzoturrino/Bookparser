@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace BookParser
 {
-    class BookParser
+    public class BookParser
     {
-
+        static public void Main(string[] args)
+        {
+            Console.WriteLine("sup");
+        }
     }
 }
