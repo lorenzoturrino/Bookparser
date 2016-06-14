@@ -16,7 +16,12 @@ namespace BookParser.Test
         [TestCase]
         public void FileReadTest()
         {
-            Assert.AreEqual(true, false);
+            string ExpectedString = "This is a Test!?.";
+            string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
+
+            TextFile TestFile = new TextFile(FilePath);
+                 
+            Assert.AreEqual(ExpectedString, TestFile.RawText);
         }
 
     }

@@ -12,7 +12,14 @@ namespace BookParser
 
         public TextFile(string path)
         {
-            FileContent = System.IO.File.ReadAllText(path);
+            FileContent = System.IO.File
+                .ReadAllText(path)
+                .TrimEnd('\r', '\n');
+        }
+
+        public string RawText
+        {
+            get { return FileContent; }
         }
     }
 }
