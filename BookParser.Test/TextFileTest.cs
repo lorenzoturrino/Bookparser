@@ -14,7 +14,7 @@ namespace BookParser.Test
     class TextFileTest
     {
         [TestCase]
-        public void FileReadTest()
+        public void ConstructorTest()
         {
             string ExpectedString = "This is a Test!?.";
             string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
@@ -22,6 +22,17 @@ namespace BookParser.Test
             TextFile TestFile = new TextFile(FilePath);
                  
             Assert.AreEqual(ExpectedString, TestFile.RawText);
+        }
+
+        [TestCase]
+        public void ParsedWordsTest()
+        {
+            string[] ExpectedArray = {"This", "is", "a", "Test"};
+            string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
+
+            TextFile TestFile = new TextFile(FilePath);
+
+            Assert.AreEqual(ExpectedArray, TestFile.ParsedWords);
         }
 
     }
