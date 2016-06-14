@@ -8,40 +8,40 @@ namespace BookParser
 {
     public class TextFile
     {
-        private string FileContent;
+        private string fileContent;
 
         public TextFile(string path)
         {
-            FileContent = System.IO.File
+            fileContent = System.IO.File
                 .ReadAllText(path)
                 .TrimEnd('\r', '\n');
         }
 
-        public string RawText
+        public string rawText
         {
-            get { return FileContent; }
+            get { return fileContent; }
         }
 
         public string[] ParsedWords()
         {
-            string Pattern = @"[\W]+";
-            return StringSplitter(FileContent, Pattern);
+            string pattern = @"[\W]+";
+            return StringSplitter(fileContent, pattern);
         }
 
         private string[] StringSplitter(string originalString, string pattern)
         {
-            Regex SubstitionString = new Regex(pattern);
-            string[] WordArray = SubstitionString.Split(originalString);
-            string[] CleanArray = TrimEmptyValues(WordArray);
-            return CleanArray;
+            Regex substitionString = new Regex(pattern);
+            string[] wordArray = substitionString.Split(originalString);
+            string[] cleanArray = TrimEmptyValues(wordArray);
+            return cleanArray;
         }
 
         private string[] TrimEmptyValues(string[] originalArray)
         {
-            string[] CleanArray = originalArray
+            string[] cleanArray = originalArray
                 .Where(value => value.Length > 0)
                 .ToArray();
-            return CleanArray;
+            return cleanArray;
         }
 
 

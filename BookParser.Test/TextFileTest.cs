@@ -16,32 +16,32 @@ namespace BookParser.Test
         [TestCase]
         public void ConstructorTest()
         {
-            string ExpectedString = @"This\ %is a ^Test is is a!?.";
-            string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
+            string expectedString = @"This\ %is a ^Test is is a!?.";
+            string filePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
 
-            TextFile TestFile = new TextFile(FilePath);
+            TextFile testFile = new TextFile(filePath);
                  
-            Assert.AreEqual(ExpectedString, TestFile.RawText);
+            Assert.AreEqual(expectedString, testFile.rawText);
         }
 
         [TestCase]
         public void ParsedWordsTest()
         {
-            string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
+            string filePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
 
-            TextFile TestFile = new TextFile(FilePath);
+            TextFile testFile = new TextFile(filePath);
 
-            Assert.AreEqual(7, TestFile.ParsedWords().Length);
+            Assert.AreEqual(7, testFile.ParsedWords().Length);
         }
 
         [TestCase]
         public void CountOccurrencesTest()
         {
-            string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
+            string filePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
 
-            TextFile TestFile = new TextFile(FilePath);
+            TextFile testFile = new TextFile(filePath);
 
-            Dictionary<string, int> occurrences = TestFile.CountOccurrences();
+            Dictionary<string, int> occurrences = testFile.CountOccurrences();
             Assert.AreEqual(1, occurrences["Test"]);
             Assert.AreEqual(3, occurrences["is"]);
         }
