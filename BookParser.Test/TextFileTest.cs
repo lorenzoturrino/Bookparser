@@ -11,12 +11,13 @@ using BookParser;
 namespace BookParser.Test
 {
     [TestFixture]
-    class BookParserTest
+    class TextFileTest
     {
         [TestCase]
-        public void FirstTest()
+        public void FileReadTest()
         {
-            Assert.AreEqual(true, true);
+            Assert.AreEqual(true, false);
         }
+
     }
 }

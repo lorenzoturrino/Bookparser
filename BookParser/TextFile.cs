@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace BookParser
 {
-    class BookParser
+    public class TextFile
     {
-        static public void Main(string[] args)
+        private string FileContent;
+
+        public TextFile(string path)
         {
-            Console.WriteLine("sup");
+            FileContent = System.IO.File.ReadAllText(path);
         }
     }
 }
