@@ -34,7 +34,17 @@ namespace BookParser.Test
             Assert.AreEqual(7, TestFile.ParsedWords().Length);
         }
 
-       
+        [TestCase]
+        public void CountOccurrencesTest()
+        {
+            string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
+
+            TextFile TestFile = new TextFile(FilePath);
+
+            Dictionary<string, int> occurrences = TestFile.CountOccurrences();
+            Assert.AreEqual(1, occurrences["Test"]);
+            Assert.AreEqual(3, occurrences["is"]);
+        }
 
     }
 }
