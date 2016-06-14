@@ -32,7 +32,7 @@ namespace BookParser.Test
 
             TextFile TestFile = new TextFile(FilePath);
 
-            Assert.AreEqual(ExpectedArray, TestFile.ParsedWords);
+            Assert.AreEqual(ExpectedArray, TestFile.ParsedWords());
         }
 
     }

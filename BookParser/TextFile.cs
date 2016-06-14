@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BookParser
@@ -21,5 +21,29 @@ namespace BookParser
         {
             get { return FileContent; }
         }
+
+        public string[] ParsedWords()
+        {
+            string Pattern = @"[\W]+";
+            return StringSplitter(FileContent, Pattern);
+        }
+
+        private string[] StringSplitter(string originalString, string pattern)
+        {
+            Regex SubstitionString = new Regex(pattern);
+            string[] WordArray = SubstitionString.Split(originalString);
+            string[] CleanArray = TrimEmptyValues(WordArray);
+            return CleanArray;
+        }
+
+        private string[] TrimEmptyValues(string[] originalArray)
+        {
+            string[] CleanArray = originalArray
+                .Where(value => value.Length > 0)
+                .ToArray();
+            return CleanArray;
+        }
+
+
     }
 }
