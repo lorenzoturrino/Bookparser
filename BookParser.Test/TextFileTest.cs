@@ -16,7 +16,7 @@ namespace BookParser.Test
         [TestCase]
         public void ConstructorTest()
         {
-            string ExpectedString = "This is a Test!?.";
+            string ExpectedString = @"This\ %is a ^Test is is a!?.";
             string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
 
             TextFile TestFile = new TextFile(FilePath);
@@ -27,13 +27,14 @@ namespace BookParser.Test
         [TestCase]
         public void ParsedWordsTest()
         {
-            string[] ExpectedArray = {"This", "is", "a", "Test"};
             string FilePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\BookParser.Test\\bin\\TestFile.txt";
 
             TextFile TestFile = new TextFile(FilePath);
 
-            Assert.AreEqual(ExpectedArray, TestFile.ParsedWords());
+            Assert.AreEqual(7, TestFile.ParsedWords().Length);
         }
+
+       
 
     }
 }
