@@ -12,13 +12,19 @@ namespace BookParser
         {
             Console.WriteLine("Starting up sample reading");
 
-            string filePath = "C:\\Users\\neuro\\OneDrive\\prowin\\BookParser\\Sample1.txt";
+            string filePath = @"C:\Users\neuro\OneDrive\prowin\BookParser\Sample1.txt";
 
-            TextFile sampleFile = new TextFile(filePath);
-            Dictionary<string,int> occurrences = sampleFile.CountOccurrences();
-            foreach (KeyValuePair<string,int> entry in occurrences.OrderBy(entry => entry.Key))
+            TextFile sampleFile = new TextFile(filePath, true);
+            Dictionary<int, List<string>> resultList = sampleFile.SortOccurrencesByNumber();
+
+            foreach (KeyValuePair<int,List<string>> entry in resultList.OrderByDescending(pair => pair.Key))
             {
-                Console.WriteLine(entry.Key + " - " + entry.Value + " times, is it prime? "+ MathHelper.CheckPrimality(entry.Value));
+                Console.Write(entry.Key + " appearances: ");
+                foreach (string word in entry.Value)
+                {
+                    Console.Write(word + ", ");
+                }
+                Console.WriteLine();
             }
         }
     }
