@@ -81,10 +81,10 @@ namespace BookParser.Test
         [TestCase]
         public void SortOccurrencesByNumber()
         {
-            string testString = "4 4 4 4 four four four";
-            string[] expectedArray = { "4", "four" };
+            string testString = "4 4 4 4 four four four four";
+            List<string> expectedList = new List<string> { "4", "four" };
             TextFile testFile = new TextFile(testString, false);
-            Assert.AreEqual(expectedArray, testFile.SortOccurrencesByNumber()[4]);
+            Assert.AreEqual(expectedList, testFile.SortOccurrencesByNumber()[4]);
 
         }
     }

@@ -50,12 +50,34 @@ namespace BookParser
             return occurrences;
         }
 
-        public Dictionary<int,string[]> SortOccurrencesByNumber()
+        //public Dictionary<int,string[]> SortOccurrencesByNumber()
+        //{
+        //    Dictionary<int, string[]> occurrences = new Dictionary<int, string[]>();
+
+        //    foreach(KeyValuePair<string,int> entry in CountOccurrences())
+        //    {
+        //        if (occurrences.ContainsKey(entry.Value))
+        //            Array.add
+        //        else
+        //            occurrences[entry.Value] = new string[];
+        //    }
+
+        //    return occurrences;
+        //}
+
+        public Dictionary<int,List<string>> SortOccurrencesByNumber()
         {
-            string[] res = new string[] { "4", "four" };
-            Dictionary<int, string[]> ret = new Dictionary<int, string[]>();
-            ret.Add(4, res);
-            return ret;
+            Dictionary<int, List<string>> occurrences = new Dictionary<int, List<string>>();
+            foreach (KeyValuePair<string,int> entry in CountOccurrences())
+            {
+                Console.WriteLine("entry" + entry.Key + "<>" + entry.Value);
+                if (!occurrences.ContainsKey(entry.Value))
+                {
+                    occurrences[entry.Value] = new List<string>();
+                }
+                occurrences[entry.Value].Add(entry.Key);
+            }
+            return occurrences;
         }
 
         private string[] StringSplitter(string originalString, string pattern)
