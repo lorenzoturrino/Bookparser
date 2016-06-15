@@ -55,7 +55,7 @@ namespace BookParser.Test
         }
 
         [TestCase]
-        public void ParseWords_DivideOnUnderscore()
+        public void ParsedWords_DivideOnUnderscore()
         {
             string testString = "one_two";
             TextFile testFile = new TextFile(testString, false);
@@ -76,6 +76,16 @@ namespace BookParser.Test
             string testString = "Hello hello HELLO hELLo";
             TextFile testFile = new TextFile(testString, false);
             Assert.AreEqual(4, testFile.CountOccurrences()["hello"]);
+        }
+
+        [TestCase]
+        public void SortOccurrencesByNumber()
+        {
+            string testString = "4 4 4 4 four four four";
+            string[] expectedArray = { "4", "four" };
+            TextFile testFile = new TextFile(testString, false);
+            Assert.AreEqual(expectedArray, testFile.SortOccurrencesByNumber()[4]);
+
         }
     }
 }

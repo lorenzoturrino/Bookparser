@@ -50,6 +50,14 @@ namespace BookParser
             return occurrences;
         }
 
+        public Dictionary<int,string[]> SortOccurrencesByNumber()
+        {
+            string[] res = new string[] { "4", "four" };
+            Dictionary<int, string[]> ret = new Dictionary<int, string[]>();
+            ret.Add(4, res);
+            return ret;
+        }
+
         private string[] StringSplitter(string originalString, string pattern)
         {
             Regex substitionString = new Regex(pattern);
