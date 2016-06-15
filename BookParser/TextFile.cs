@@ -41,10 +41,11 @@ namespace BookParser
             string[] parsedWords = ParsedWords();
             foreach (string entry in parsedWords)
             {
-                if (occurrences.ContainsKey(entry))
-                    occurrences[entry] += 1;
+                string lowerEntry = entry.ToLower();
+                if (occurrences.ContainsKey(lowerEntry))
+                    occurrences[lowerEntry] += 1;
                 else
-                    occurrences[entry] = 1;
+                    occurrences[lowerEntry] = 1;
             }
             return occurrences;
         }

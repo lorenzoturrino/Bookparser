@@ -63,5 +63,19 @@ namespace BookParser.Test
 
         }
 
+        [TestCase]
+        public void CountOccurrences_SingleWords()
+        {
+            TextFile testFile = new TextFile(inputString, false);
+            Assert.AreEqual(1, testFile.CountOccurrences()["hello"]);
+        }
+
+        [TestCase]
+        public void CountOccurrences_UpLowerCase()
+        {
+            string testString = "Hello hello HELLO hELLo";
+            TextFile testFile = new TextFile(testString, false);
+            Assert.AreEqual(4, testFile.CountOccurrences()["hello"]);
+        }
     }
 }
