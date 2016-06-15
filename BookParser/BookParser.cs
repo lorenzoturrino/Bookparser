@@ -14,17 +14,19 @@ namespace BookParser
 
             string filePath = @"C:\Users\neuro\OneDrive\prowin\BookParser\Sample1.txt";
 
-            TextFile sampleFile = new TextFile(filePath, true);
+            TextFile_v1 sampleFile = new TextFile_v1(filePath, true);
             Dictionary<int, List<string>> resultList = sampleFile.SortOccurrencesByNumber();
 
             foreach (KeyValuePair<int,List<string>> entry in resultList.OrderByDescending(pair => pair.Key))
             {
-                Console.Write(entry.Key + " appearances: ");
+                string line = entry.Key.ToString();
+                line += (MathHelper.CheckPrimality(entry.Key) ? " (Prime number)" : " (Not a prime number)") + " appearances:\n";
                 foreach (string word in entry.Value)
                 {
-                    Console.Write(word + ", ");
+                    line += word + ", ";
                 }
-                Console.WriteLine();
+                line = line.Remove(line.Length - 2) + "\n\n";
+                Console.Write(line);
             }
         }
     }

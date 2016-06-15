@@ -11,7 +11,7 @@ using BookParser;
 namespace BookParser.Test
 {
     [TestFixture]
-    class TextFileTest
+    class TextFileTest_v1
     {
 
         string fileString = "This is a Test";
@@ -21,28 +21,28 @@ namespace BookParser.Test
         [TestCase]
         public void Constructor_WithFile_DefaultArgument()
         {
-            TextFile testFile = new TextFile(filePath);
+            TextFile_v1 testFile = new TextFile_v1(filePath);
             Assert.AreEqual(fileString, testFile.rawText);
         }
 
         [TestCase]
         public void Constructor_WithFile_ExplicitArgument()
         {
-            TextFile testFile = new TextFile(filePath, true);
+            TextFile_v1 testFile = new TextFile_v1(filePath, true);
             Assert.AreEqual(fileString, testFile.rawText);
         }
 
         [TestCase]
         public void Constructor_WithString()
         {
-            TextFile testFile = new TextFile(inputString, false);
+            TextFile_v1 testFile = new TextFile_v1(inputString, false);
             Assert.AreEqual(inputString, testFile.rawText);
         }
 
         [TestCase]
         public void ParsedWords_DivideOnSpace()
         {
-            TextFile testFile = new TextFile(inputString, false);
+            TextFile_v1 testFile = new TextFile_v1(inputString, false);
             Assert.AreEqual(2, testFile.ParsedWords().Length);
         }
 
@@ -50,7 +50,7 @@ namespace BookParser.Test
         public void ParsedWords_DivideOnPunctuation()
         {
             string testString = "one.two!three?four-five;six:seven";
-            TextFile testFile = new TextFile(testString, false);
+            TextFile_v1 testFile = new TextFile_v1(testString, false);
             Assert.AreEqual(7, testFile.ParsedWords().Length);
         }
 
@@ -58,7 +58,7 @@ namespace BookParser.Test
         public void ParsedWords_DivideOnUnderscore()
         {
             string testString = "one_two";
-            TextFile testFile = new TextFile(testString, false);
+            TextFile_v1 testFile = new TextFile_v1(testString, false);
             Assert.AreEqual(2, testFile.ParsedWords().Length);
 
         }
@@ -66,7 +66,7 @@ namespace BookParser.Test
         [TestCase]
         public void CountOccurrences_SingleWords()
         {
-            TextFile testFile = new TextFile(inputString, false);
+            TextFile_v1 testFile = new TextFile_v1(inputString, false);
             Assert.AreEqual(1, testFile.CountOccurrences()["hello"]);
         }
 
@@ -74,7 +74,7 @@ namespace BookParser.Test
         public void CountOccurrences_UpLowerCase()
         {
             string testString = "Hello hello HELLO hELLo";
-            TextFile testFile = new TextFile(testString, false);
+            TextFile_v1 testFile = new TextFile_v1(testString, false);
             Assert.AreEqual(4, testFile.CountOccurrences()["hello"]);
         }
 
@@ -83,7 +83,7 @@ namespace BookParser.Test
         {
             string testString = "4 4 4 4 four four four four";
             List<string> expectedList = new List<string> { "4", "four" };
-            TextFile testFile = new TextFile(testString, false);
+            TextFile_v1 testFile = new TextFile_v1(testString, false);
             Assert.AreEqual(expectedList, testFile.SortOccurrencesByNumber()[4]);
 
         }

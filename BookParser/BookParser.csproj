@@ -38,7 +38,8 @@
   <ItemGroup>
     <Compile Include="BookParser.cs" />
     <Compile Include="MathHelper.cs" />
-    <Compile Include="TextFile.cs" />
+    <Compile Include="TextFile_v1.cs" />
+    <Compile Include="TextFile_v2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

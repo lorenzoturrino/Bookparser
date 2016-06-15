@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BookParser
 {
-    public class TextFile
+    public class TextFile_v1
     {
         private string fileContent;
 
-        public TextFile(string inputString, bool isFile = true)
+        public TextFile_v1(string inputString, bool isFile = true)
         {
             if(isFile)
             {
