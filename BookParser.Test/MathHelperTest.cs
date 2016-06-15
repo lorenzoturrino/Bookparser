@@ -17,29 +17,30 @@ namespace BookParser.Test
         public void CheckPrimality_Zero()
         {
             bool isZeroPrime = MathHelper.CheckPrimality(0);         
-            Assert.AreEqual(false, isZeroPrime);
+            Assert.IsFalse(isZeroPrime);
         }
 
         [TestCase]
         public void CheckPrimality_One()
         {
             bool isOnePrime = MathHelper.CheckPrimality(1);
-            Assert.AreEqual(false, isOnePrime);
+            Assert.IsFalse(isOnePrime);
         }
 
         [TestCase]
         public void CheckPrimality_PrimeNumber()
         {
             bool isSevenPrime = MathHelper.CheckPrimality(7);
-            Assert.AreEqual(true, isSevenPrime);
+            Assert.IsTrue(isSevenPrime);
         }
 
         [TestCase]
         public void CheckPrimality_NonprimeNumber()
         {
             bool isSixPrime = MathHelper.CheckPrimality(6);
-            Assert.AreEqual(false, isSixPrime);
+            Assert.IsFalse(isSixPrime);
         }
 
     }
 }
+
