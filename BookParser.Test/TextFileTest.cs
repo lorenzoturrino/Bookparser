@@ -14,10 +14,9 @@ namespace BookParser.Test
     class TextFileTest
     {
 
-        string fileString = @"This\ %is a ^Test is is a!?.";
+        string fileString = "This is a Test";
         string filePath = @"C:\Users\neuro\OneDrive\prowin\BookParser\BookParser.Test\bin\TestFile.txt";
-        string inputString = "Hello123";
-
+        string inputString = "Hello Friend";
 
         [TestCase]
         public void Constructor_WithFile_DefaultArgument()
@@ -41,19 +40,27 @@ namespace BookParser.Test
         }
 
         [TestCase]
-        public void ParsedWordsTest()
+        public void ParsedWords_DivideOnSpace()
         {
-            TextFile testFile = new TextFile(filePath);
+            TextFile testFile = new TextFile(inputString, false);
+            Assert.AreEqual(2, testFile.ParsedWords().Length);
+        }
+
+        [TestCase]
+        public void ParsedWords_DivideOnPunctuation()
+        {
+            string testString = "one.two!three?four-five;six:seven";
+            TextFile testFile = new TextFile(testString, false);
             Assert.AreEqual(7, testFile.ParsedWords().Length);
         }
 
         [TestCase]
-        public void CountOccurrencesTest()
+        public void ParseWords_DivideOnUnderscore()
         {
-            TextFile testFile = new TextFile(filePath);
-            Dictionary<string, int> occurrences = testFile.CountOccurrences();
-            Assert.AreEqual(1, occurrences["Test"]);
-            Assert.AreEqual(3, occurrences["is"]);
+            string testString = "one_two";
+            TextFile testFile = new TextFile(testString, false);
+            Assert.AreEqual(2, testFile.ParsedWords().Length);
+
         }
 
     }

@@ -31,7 +31,7 @@ namespace BookParser
 
         public string[] ParsedWords()
         {
-            string pattern = @"[\W]+";
+            string pattern = @"[\W_]+";
             return StringSplitter(fileContent, pattern);
         }
 
