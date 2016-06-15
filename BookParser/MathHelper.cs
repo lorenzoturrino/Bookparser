@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BookParser
 {
-    class MathHelper
+    public static class MathHelper
     {
+        public static bool CheckPrimality(int value)
+        {
+            return false;
+        }
     }
 }
