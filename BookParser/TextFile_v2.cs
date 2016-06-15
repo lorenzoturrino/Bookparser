@@ -1,18 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BookParser
 {
-    class TextFile_v2
+    public class TextFile_v2
     {
         private string fileContent;
-        //private wordArray;
+        private string[] parsedWordsArray;
         //private Dictionary<int, List<string>> sortedOccurrences;
 
         public TextFile_v2(string inputString, bool isFile = true)
+        {
+            readText(inputString, isFile);
+            populateWordArray();
+        }
+
+        public string rawText
+        {
+            get { return fileContent; }
+        }
+
+        public string[] parsedWords
+        {
+            get { return parsedWordsArray; }
+        }
+
+        private void readText(string inputString, bool isFile)
         {
             if (isFile)
             {
@@ -24,12 +40,15 @@ namespace BookParser
             {
                 fileContent = inputString;
             }
-
         }
 
-        public string rawText
+        private void populateWordArray()
         {
-            get { return fileContent; }
+            Regex splitChars = new Regex(@"[\W_]+");
+            parsedWordsArray = splitChars
+                .Split(fileContent)
+                .Where(value => value.Length > 0)
+                .ToArray();
         }
     }
 }

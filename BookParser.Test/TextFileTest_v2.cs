@@ -20,22 +20,46 @@ namespace BookParser.Test
         [TestCase]
         public void Constructor_WithFile_DefaultArgument()
         {
-            TextFile_v1 testFile = new TextFile_v1(filePath);
+            TextFile_v2 testFile = new TextFile_v2(filePath);
             Assert.AreEqual(fileString, testFile.rawText);
         }
 
         [TestCase]
         public void Constructor_WithFile_ExplicitArgument()
         {
-            TextFile_v1 testFile = new TextFile_v1(filePath, true);
+            TextFile_v2 testFile = new TextFile_v2(filePath, true);
             Assert.AreEqual(fileString, testFile.rawText);
         }
 
         [TestCase]
         public void Constructor_WithString()
         {
-            TextFile_v1 testFile = new TextFile_v1(inputString, false);
+            TextFile_v2 testFile = new TextFile_v2(inputString, false);
             Assert.AreEqual(inputString, testFile.rawText);
+        }
+
+        [TestCase]
+        public void ParsedWords_DivideOnSpace()
+        {
+            TextFile_v2 testFile = new TextFile_v2(inputString, false);
+            Assert.AreEqual(2, testFile.parsedWords.Length);
+        }
+
+        [TestCase]
+        public void ParsedWords_DivideOnPunctuation()
+        {
+            string testString = "one.two!three?four-five;six:seven";
+            TextFile_v2 testFile = new TextFile_v2(testString, false);
+            Assert.AreEqual(7, testFile.parsedWords.Length);
+        }
+
+        [TestCase]
+        public void ParsedWords_DivideOnUnderscore()
+        {
+            string testString = "one_two";
+            TextFile_v2 testFile = new TextFile_v2(testString, false);
+            Assert.AreEqual(2, testFile.parsedWords.Length);
+
         }
     }
 }
