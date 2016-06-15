@@ -10,11 +10,18 @@ namespace BookParser
     {
         private string fileContent;
 
-        public TextFile(string path)
+        public TextFile(string inputString, bool isFile = true)
         {
-            fileContent = System.IO.File
-                .ReadAllText(path)
+            if(isFile)
+            {
+                fileContent = System.IO.File
+                .ReadAllText(inputString)
                 .TrimEnd('\r', '\n');
+            } else
+            {
+                fileContent = inputString;
+            }
+            
         }
 
         public string rawText

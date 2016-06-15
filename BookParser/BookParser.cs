@@ -16,9 +16,9 @@ namespace BookParser
 
             TextFile sampleFile = new TextFile(filePath);
             Dictionary<string,int> occurrences = sampleFile.CountOccurrences();
-            foreach (KeyValuePair<string,int> entry in occurrences.OrderByDescending(entry => entry.Value))
+            foreach (KeyValuePair<string,int> entry in occurrences.OrderBy(entry => entry.Key))
             {
-                Console.WriteLine("entry: " + entry.Key + " - " + entry.Value);
+                Console.WriteLine(entry.Key + " - " + entry.Value + " times, is it prime? "+ MathHelper.CheckPrimality(entry.Value));
             }
         }
     }
