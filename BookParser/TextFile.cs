@@ -28,6 +28,20 @@ namespace BookParser
             return StringSplitter(fileContent, pattern);
         }
 
+        public Dictionary<string, int> CountOccurrences()
+        {
+            Dictionary<string, int> occurrences = new Dictionary<string, int>();
+            string[] parsedWords = ParsedWords();
+            foreach (string entry in parsedWords)
+            {
+                if (occurrences.ContainsKey(entry))
+                    occurrences[entry] += 1;
+                else
+                    occurrences[entry] = 1;
+            }
+            return occurrences;
+        }
+
         private string[] StringSplitter(string originalString, string pattern)
         {
             Regex substitionString = new Regex(pattern);
