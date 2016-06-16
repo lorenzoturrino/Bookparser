@@ -41,6 +41,12 @@ namespace BookParser.Test
             Assert.IsFalse(isSixPrime);
         }
 
+        [TestCase]
+        public void IsPrime_ExtendsInt()
+        {
+            Assert.IsTrue(7.IsPrime());
+        }
+
     }
 }
 

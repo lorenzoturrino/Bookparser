@@ -10,13 +10,20 @@ namespace BookParser
     {
         public static bool CheckPrimality(int value)
         {
-            if(value == 0 || value == 1)
-                return false;
             return PrimeByTrialDivision(value);
+        }
+
+        public static bool IsPrime(this int value)
+        {
+            return CheckPrimality(value);
         }
 
         private static bool PrimeByTrialDivision(int value)
         {
+            if (value == 0 || value == 1)
+            {
+                return false;
+            }
             int maxDivisor = (int)Math.Ceiling(Math.Sqrt(value));
             for (int i = 2; i <= maxDivisor; i++)
             {
