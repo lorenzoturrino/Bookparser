@@ -10,14 +10,23 @@ namespace BookParser
     {
         static public void Main(string[] args)
         {
-            
-            string filePath = @"..\..\..\Sample1.txt";
-            Console.WriteLine("Starting up sample reading from:" + filePath);
+            string filePath;
+
+            if(args.Length == 0)
+            {
+                Console.WriteLine("No arg detected, loading sample file");
+                filePath = @"..\..\..\Sample1.txt";
+            }
+            else
+            {
+                Console.WriteLine("Loading " + args[0]);
+                filePath = args[0];
+            }
+
 
             TextFile_v1 sampleFile = new TextFile_v1(filePath, true);
             Dictionary<int, List<string>> resultList = sampleFile.SortOccurrencesByNumber();
             PrintResultToConsole(resultList);
-
         }
 
         static private void PrintResultToConsole(Dictionary<int, List<string>> blob)
