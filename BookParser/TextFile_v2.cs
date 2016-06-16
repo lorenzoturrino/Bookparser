@@ -14,9 +14,9 @@ namespace BookParser
 
         public TextFile_v2(string inputString, bool isFile = true)
         {
-            readText(inputString, isFile);
-            populateWordArray();
-            populateOccurrencesCount();
+            ReadText(inputString, isFile);
+            PopulateWordArray();
+            PopulateOccurrencesCount();
         }
 
         public string rawText
@@ -35,7 +35,7 @@ namespace BookParser
         }
 
 
-        private void readText(string inputString, bool isFile)
+        private void ReadText(string inputString, bool isFile)
         {
             if (isFile)
             {
@@ -49,7 +49,7 @@ namespace BookParser
             }
         }
 
-        private void populateWordArray()
+        private void PopulateWordArray()
         {
             Regex splitChars = new Regex(@"[\W_]+");
             parsedWordsArray = splitChars
@@ -58,7 +58,7 @@ namespace BookParser
                 .ToArray();
         }
 
-        private void populateOccurrencesCount()
+        private void PopulateOccurrencesCount()
         {
             Dictionary<string, int> occurrences = new Dictionary<string, int>();
             foreach (string entry in parsedWordsArray)
@@ -68,10 +68,10 @@ namespace BookParser
                 else
                     occurrences[entry] = 1;
             }
-            sortedOccurrencesCount = sortOccurrences(occurrences);
+            sortedOccurrencesCount = SortOccurrences(occurrences);
         }
 
-        private Dictionary<int, List<string>> sortOccurrences(Dictionary<string, int> occurrences)
+        private Dictionary<int, List<string>> SortOccurrences(Dictionary<string, int> occurrences)
         {
             Dictionary<int, List<string>> sortedOccurrences = new Dictionary<int, List<string>>();
             foreach (KeyValuePair<string,int> entry in occurrences)
