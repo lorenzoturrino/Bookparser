@@ -15,7 +15,7 @@ namespace BookParser.Test
     {
 
         string fileString = "This is a Test";
-        string filePath = @"C:\Users\neuro\OneDrive\prowin\BookParser\BookParser.Test\bin\TestFile.txt";
+        string filePath = @"..\TestFile.txt";
         string inputString = "Hello Friend";
 
         [TestCase]

@@ -42,6 +42,11 @@
   <ItemGroup>
     <Compile Include="BookParserTest.cs" />
     <Compile Include="MathHelperTest.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TextFileTest_v1.cs" />
     <Compile Include="TextFileTest_v2.cs" />
   </ItemGroup>
@@ -76,6 +81,15 @@
       <Project>{07a72e5b-3784-4b62-99b2-10a70af5aeee}</Project>
       <Name>BookParser</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TestFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
