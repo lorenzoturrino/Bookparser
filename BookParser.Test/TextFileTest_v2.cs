@@ -61,5 +61,24 @@ namespace BookParser.Test
             Assert.AreEqual(2, testFile.parsedWords.Length);
 
         }
+
+        [TestCase]
+        public void SortedOccurrences_CorrectKey()
+        {
+            string testString = "3 3 3";
+            List<string> expectedList = new List<string> { "3" };
+            TextFile_v2 testFile = new TextFile_v2(testString, false);
+            Assert.AreEqual(expectedList, testFile.sortedOccurrences[3]);
+        }
+
+        [TestCase]
+        public void SortedOccurrences_CorrectValue()
+        {
+            string testString = "2 2 two two";
+            List<string> expectedList = new List<string> { "2", "two" };
+            TextFile_v2 testFile = new TextFile_v2(testString, false);
+            Assert.AreEqual(expectedList, testFile.sortedOccurrences[2]);
+
+        }
     }
 }

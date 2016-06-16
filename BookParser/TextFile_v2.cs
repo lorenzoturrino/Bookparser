@@ -10,12 +10,13 @@ namespace BookParser
     {
         private string fileContent;
         private string[] parsedWordsArray;
-        //private Dictionary<int, List<string>> sortedOccurrences;
+        private Dictionary<int, List<string>> sortedOccurrencesCount;
 
         public TextFile_v2(string inputString, bool isFile = true)
         {
             readText(inputString, isFile);
             populateWordArray();
+            populateOccurrencesCount();
         }
 
         public string rawText
@@ -28,13 +29,19 @@ namespace BookParser
             get { return parsedWordsArray; }
         }
 
+        public Dictionary<int, List<string>> sortedOccurrences
+        {
+            get { return sortedOccurrencesCount; }
+        }
+
+
         private void readText(string inputString, bool isFile)
         {
             if (isFile)
             {
                 fileContent = System.IO.File
-                .ReadAllText(inputString)
-                .TrimEnd('\r', '\n');
+                    .ReadAllText(inputString)
+                    .TrimEnd('\r', '\n');
             }
             else
             {
@@ -49,6 +56,33 @@ namespace BookParser
                 .Split(fileContent)
                 .Where(value => value.Length > 0)
                 .ToArray();
+        }
+
+        private void populateOccurrencesCount()
+        {
+            Dictionary<string, int> occurrences = new Dictionary<string, int>();
+            foreach (string entry in parsedWordsArray)
+            {
+                if (occurrences.ContainsKey(entry))
+                    occurrences[entry] += 1;
+                else
+                    occurrences[entry] = 1;
+            }
+            sortedOccurrencesCount = sortOccurrences(occurrences);
+        }
+
+        private Dictionary<int, List<string>> sortOccurrences(Dictionary<string, int> occurrences)
+        {
+            Dictionary<int, List<string>> sortedOccurrences = new Dictionary<int, List<string>>();
+            foreach (KeyValuePair<string,int> entry in occurrences)
+            {
+                if(!sortedOccurrences.ContainsKey(entry.Value))
+                {
+                    sortedOccurrences[entry.Value] = new List<string>();
+                }
+                sortedOccurrences[entry.Value].Add(entry.Key);
+            }
+            return sortedOccurrences;
         }
     }
 }
