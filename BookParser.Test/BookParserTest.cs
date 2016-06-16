@@ -13,10 +13,6 @@ namespace BookParser.Test
     [TestFixture]
     class BookParserTest
     {
-        [TestCase]
-        public void FirstTest()
-        {
-            Assert.AreEqual(true, true);
-        }
+        
     }
 }
