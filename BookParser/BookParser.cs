@@ -24,9 +24,13 @@ namespace BookParser
             }
 
 
-            TextFile_v1 sampleFile = new TextFile_v1(filePath, true);
-            Dictionary<int, List<string>> resultList = sampleFile.SortOccurrencesByNumber();
-            PrintResultToConsole(resultList);
+            //TextFile_v1 sampleFile = new TextFile_v1(filePath, true);
+            //Dictionary<int, List<string>> resultList = sampleFile.SortOccurrencesByNumber();
+            //PrintResultToConsole(resultList);
+
+            TextFile_v2 sampleFile_2 = new TextFile_v2(filePath, true);
+            Dictionary<int, List<string>> resultList_2 = sampleFile_2.sortedOccurrences;
+            PrintResultToConsole(resultList_2);
         }
 
         static private void PrintResultToConsole(Dictionary<int, List<string>> blob)

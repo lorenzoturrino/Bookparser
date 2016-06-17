@@ -62,6 +62,15 @@ namespace BookParser.Test
 
         }
 
+        [TestCase] 
+        public void SortedOccurrences_UpLowerCase()
+        {
+            string testString = "Hello hello HELLO hELLo";
+            List<string> expectedList = new List<string> { "hello" };
+            TextFile_v2 testFile = new TextFile_v2(testString, false);
+            Assert.AreEqual(expectedList, testFile.sortedOccurrences[4]);
+        }
+
         [TestCase]
         public void SortedOccurrences_CorrectKey()
         {

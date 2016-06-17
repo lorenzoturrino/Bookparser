@@ -63,10 +63,11 @@ namespace BookParser
             Dictionary<string, int> occurrences = new Dictionary<string, int>();
             foreach (string entry in parsedWordsArray)
             {
-                if (occurrences.ContainsKey(entry))
-                    occurrences[entry] += 1;
+                string lowerCaseEntry = entry.ToLower();
+                if (occurrences.ContainsKey(lowerCaseEntry))
+                    occurrences[lowerCaseEntry] += 1;
                 else
-                    occurrences[entry] = 1;
+                    occurrences[lowerCaseEntry] = 1;
             }
             sortedOccurrencesCount = SortOccurrences(occurrences);
         }
