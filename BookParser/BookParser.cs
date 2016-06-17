@@ -10,27 +10,25 @@ namespace BookParser
     {
         static public void Main(string[] args)
         {
-            string filePath;
+            TextFile_v1 sampleFile = loadText(args);
+            PrintResultToConsole(sampleFile.SortOccurrencesByNumber());
+        }
 
-            if(args.Length == 0)
+        static private TextFile_v1 loadText( string[] userArgs)
+        {
+            string filePath;
+            if (userArgs.Length == 0)
             {
                 Console.WriteLine("No arg detected, loading sample file");
                 filePath = @"..\..\..\Sample1.txt";
             }
             else
             {
-                Console.WriteLine("Loading " + args[0]);
-                filePath = args[0];
+                Console.WriteLine("Loading " + userArgs[0]);
+                filePath = userArgs[0];
             }
 
-
-            //TextFile_v1 sampleFile = new TextFile_v1(filePath, true);
-            //Dictionary<int, List<string>> resultList = sampleFile.SortOccurrencesByNumber();
-            //PrintResultToConsole(resultList);
-
-            TextFile_v2 sampleFile_2 = new TextFile_v2(filePath, true);
-            Dictionary<int, List<string>> resultList_2 = sampleFile_2.sortedOccurrences;
-            PrintResultToConsole(resultList_2);
+            return new TextFile_v1(filePath, true);
         }
 
         static private void PrintResultToConsole(Dictionary<int, List<string>> blob)
