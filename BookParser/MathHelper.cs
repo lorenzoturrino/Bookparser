@@ -15,7 +15,7 @@ namespace BookParser
 
         public static bool IsPrime(this int value)
         {
-            return CheckPrimality(value);
+            return PrimeByTrialDivision(value);
         }
 
         private static bool PrimeByTrialDivision(int value)
@@ -24,7 +24,7 @@ namespace BookParser
             {
                 return false;
             }
-            int maxDivisor = (int)Math.Ceiling(Math.Sqrt(value));
+            int maxDivisor = (int)Math.Min(Math.Ceiling(Math.Sqrt(value)),value-1);
             for (int i = 2; i <= maxDivisor; i++)
             {
                 if (value % i == 0)

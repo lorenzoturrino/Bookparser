@@ -87,7 +87,6 @@ namespace BookParser.Test
             List<string> expectedList = new List<string> { "2", "two" };
             TextFile_v2 testFile = new TextFile_v2(testString, false);
             Assert.AreEqual(expectedList, testFile.sortedOccurrences[2]);
-
         }
     }
 }

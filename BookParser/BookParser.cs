@@ -16,29 +16,34 @@ namespace BookParser
 
         static private TextFile_v1 loadText( string[] userArgs)
         {
-            string filePath;
-            if (userArgs[0] == "STRING")
-            {
-                Console.WriteLine("String detected, loading " + userArgs[1]);
-                string inputText = "";
-                for(int i = 1; i < userArgs.Length; i++)
-                {
-                    inputText += userArgs[i] + " ";
-                }
-                return new TextFile_v1(inputText, false);
-
-            }
-            else if (userArgs.Length == 0)
+            string sampleFile = @"..\..\..\Sample1.txt";
+            if (userArgs.Length == 0)
             {
                 Console.WriteLine("No arg detected, loading sample file");
-                filePath = @"..\..\..\Sample1.txt";
+                return new TextFile_v1(sampleFile, true);
+            }
+            else if (userArgs[0] == "STRING")
+            {
+                string inputString = buildStringFromArgs(userArgs);
+                Console.WriteLine("String detected, loading ' " + inputString + "'");
+                return new TextFile_v1(inputString, false);
             }
             else
             {
                 Console.WriteLine("File path detected, loading " + userArgs[0]);
-                filePath = userArgs[0];
+                return new TextFile_v1(userArgs[0], true);
             }
-            return new TextFile_v1(filePath, true);
+            
+        }
+
+        static private string buildStringFromArgs(string[] userArgs)
+        {
+            string inputText = "";
+            for (int i = 1; i < userArgs.Length; i++)
+            {
+                inputText += userArgs[i] + " ";
+            }
+            return inputText;
         }
 
         static private void PrintResultToConsole(Dictionary<int, List<string>> blob)
@@ -46,7 +51,7 @@ namespace BookParser
             foreach (KeyValuePair<int, List<string>> entry in blob.OrderByDescending(pair => pair.Key))
             {
                 string line = entry.Key.ToString();
-                line += (MathHelper.CheckPrimality(entry.Key) ? " (Prime number)" : " (Not a prime number)") + " appearances:\n| ";
+                line += (entry.Key.IsPrime() ? " (Prime number)" : " (Not a prime number)") + " appearances:\n| ";
                 foreach (string word in entry.Value)
                 {
                     line += word + " | ";
