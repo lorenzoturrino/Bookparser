@@ -17,17 +17,27 @@ namespace BookParser
         static private TextFile_v1 loadText( string[] userArgs)
         {
             string filePath;
-            if (userArgs.Length == 0)
+            if (userArgs[0] == "STRING")
+            {
+                Console.WriteLine("String detected, loading " + userArgs[1]);
+                string inputText = "";
+                for(int i = 1; i < userArgs.Length; i++)
+                {
+                    inputText += userArgs[i] + " ";
+                }
+                return new TextFile_v1(inputText, false);
+
+            }
+            else if (userArgs.Length == 0)
             {
                 Console.WriteLine("No arg detected, loading sample file");
                 filePath = @"..\..\..\Sample1.txt";
             }
             else
             {
-                Console.WriteLine("Loading " + userArgs[0]);
+                Console.WriteLine("File path detected, loading " + userArgs[0]);
                 filePath = userArgs[0];
             }
-
             return new TextFile_v1(filePath, true);
         }
 
